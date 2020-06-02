@@ -39,29 +39,26 @@ namespace modulocalculator {
 
 	protected:
 
+	protected:
+
+
+
+	protected:
+
+
+	private: System::Windows::Forms::Button^ button0;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Button^ button8;
-	protected:
+	private: System::Windows::Forms::Button^ button9;
 
-
-
-	protected:
-
-
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button6;
-
-	private: System::Windows::Forms::Button^ button5;
-
-
-	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ buttonTimes;
 
-
-
-
-	public: System::Windows::Forms::Button^ button0;
-	private: System::Windows::Forms::Button^ button9;
 	private: System::Windows::Forms::Button^ buttonDivided;
 	public:
 	private:
@@ -69,15 +66,12 @@ namespace modulocalculator {
 	private:
 
 
-
-	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ buttonPlus;
 
 
 
 
 
-	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ buttonEquals;
 
 
@@ -140,6 +134,7 @@ namespace modulocalculator {
 			this->button7->TabIndex = 1;
 			this->button7->Text = L"7";
 			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button8
 			// 
@@ -149,6 +144,7 @@ namespace modulocalculator {
 			this->button8->TabIndex = 2;
 			this->button8->Text = L"8";
 			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button4
 			// 
@@ -158,7 +154,7 @@ namespace modulocalculator {
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"4";
 			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button6
 			// 
@@ -168,6 +164,7 @@ namespace modulocalculator {
 			this->button6->TabIndex = 4;
 			this->button6->Text = L"6";
 			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button5
 			// 
@@ -177,6 +174,7 @@ namespace modulocalculator {
 			this->button5->TabIndex = 5;
 			this->button5->Text = L"5";
 			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button2
 			// 
@@ -186,7 +184,7 @@ namespace modulocalculator {
 			this->button2->TabIndex = 6;
 			this->button2->Text = L"2";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// buttonTimes
 			// 
@@ -199,12 +197,14 @@ namespace modulocalculator {
 			// 
 			// button0
 			// 
+			this->button0->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->button0->Location = System::Drawing::Point(61, 342);
 			this->button0->Name = L"button0";
 			this->button0->Size = System::Drawing::Size(50, 50);
 			this->button0->TabIndex = 8;
 			this->button0->Text = L"0";
 			this->button0->UseVisualStyleBackColor = true;
+			this->button0->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button9
 			// 
@@ -214,6 +214,7 @@ namespace modulocalculator {
 			this->button9->TabIndex = 9;
 			this->button9->Text = L"9";
 			this->button9->UseVisualStyleBackColor = true;
+			this->button9->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// buttonDivided
 			// 
@@ -232,6 +233,7 @@ namespace modulocalculator {
 			this->button3->TabIndex = 11;
 			this->button3->Text = L"3";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// buttonPlus
 			// 
@@ -250,6 +252,7 @@ namespace modulocalculator {
 			this->button1->TabIndex = 13;
 			this->button1->Text = L"1";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// buttonEquals
 			// 
@@ -269,7 +272,6 @@ namespace modulocalculator {
 			this->label1->Size = System::Drawing::Size(39, 39);
 			this->label1->TabIndex = 15;
 			this->label1->Text = L"Z";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 			// 
 			// textBox1
 			// 
@@ -279,7 +281,7 @@ namespace modulocalculator {
 			this->textBox1->MinimumSize = System::Drawing::Size(28, 30);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Both;
-			this->textBox1->Size = System::Drawing::Size(41, 30);
+			this->textBox1->Size = System::Drawing::Size(41, 26);
 			this->textBox1->TabIndex = 16;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
@@ -338,13 +340,15 @@ namespace modulocalculator {
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	
+
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	//Making it so I dont have to write like 10 almost same methods. Im making one handler to 10 buttons 0-9
+	System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
+	button->Text = "siema";
+};
 };
 }
