@@ -34,55 +34,29 @@ namespace modulocalculator {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ buttonMinus;
-	protected:
-
-	protected:
-
-	protected:
-
-
-
-	protected:
-
-
-	private: System::Windows::Forms::Button^ button0;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::Button^ button7;
-	private: System::Windows::Forms::Button^ button8;
-	private: System::Windows::Forms::Button^ button9;
-
-	private: System::Windows::Forms::Button^ buttonTimes;
-
-	private: System::Windows::Forms::Button^ buttonDivided;
-	public:
 	private:
+		System::Windows::Forms::Button^ button0;
+		System::Windows::Forms::Button^ button1;
+		System::Windows::Forms::Button^ button2;
+		System::Windows::Forms::Button^ button3;
+		System::Windows::Forms::Button^ button4;
+		System::Windows::Forms::Button^ button5;
+		System::Windows::Forms::Button^ button6;
+		System::Windows::Forms::Button^ button7;
+		System::Windows::Forms::Button^ button8;
+		System::Windows::Forms::Button^ button9;
 
-	private:
+		System::Windows::Forms::Button^ buttonPlus;
+		System::Windows::Forms::Button^ buttonMinus;
+		System::Windows::Forms::Button^ buttonTimes;
+		System::Windows::Forms::Button^ buttonDivided;
+		System::Windows::Forms::Button^ buttonEquals;
 
+		System::Windows::Forms::TextBox^ zInput;
+		System::Windows::Forms::TextBox^ eqInput;
+		System::Windows::Forms::Label^ label1;
+		System::Windows::Forms::Label^ label2;
 
-	private: System::Windows::Forms::Button^ buttonPlus;
-
-
-
-
-
-	private: System::Windows::Forms::Button^ buttonEquals;
-
-
-
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::Label^ label2;
-
-
-	private:
 		/// <summary>
 		/// Wymagana zmienna projektanta.
 		/// </summary>
@@ -96,35 +70,97 @@ namespace modulocalculator {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			this->buttonMinus = (gcnew System::Windows::Forms::Button());
+			this->button0 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->buttonTimes = (gcnew System::Windows::Forms::Button());
-			this->button0 = (gcnew System::Windows::Forms::Button());
 			this->button9 = (gcnew System::Windows::Forms::Button());
-			this->buttonDivided = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->buttonPlus = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->buttonMinus = (gcnew System::Windows::Forms::Button());
+			this->buttonTimes = (gcnew System::Windows::Forms::Button());
+			this->buttonDivided = (gcnew System::Windows::Forms::Button());
 			this->buttonEquals = (gcnew System::Windows::Forms::Button());
+			this->zInput = (gcnew System::Windows::Forms::TextBox());
+			this->eqInput = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
-			// buttonMinus
+			// button0
 			// 
-			this->buttonMinus->Location = System::Drawing::Point(174, 286);
-			this->buttonMinus->Name = L"buttonMinus";
-			this->buttonMinus->Size = System::Drawing::Size(50, 50);
-			this->buttonMinus->TabIndex = 0;
-			this->buttonMinus->Text = L"-";
-			this->buttonMinus->UseVisualStyleBackColor = true;
+			this->button0->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
+			this->button0->Location = System::Drawing::Point(61, 342);
+			this->button0->Name = L"button0";
+			this->button0->Size = System::Drawing::Size(50, 50);
+			this->button0->TabIndex = 8;
+			this->button0->Text = L"0";
+			this->button0->UseVisualStyleBackColor = true;
+			this->button0->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(5, 286);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(50, 50);
+			this->button1->TabIndex = 13;
+			this->button1->Text = L"1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(61, 286);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(50, 50);
+			this->button2->TabIndex = 6;
+			this->button2->Text = L"2";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(118, 286);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(50, 50);
+			this->button3->TabIndex = 11;
+			this->button3->Text = L"3";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(5, 230);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(50, 50);
+			this->button4->TabIndex = 3;
+			this->button4->Text = L"4";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(61, 230);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(50, 50);
+			this->button5->TabIndex = 5;
+			this->button5->Text = L"5";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(117, 230);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(50, 50);
+			this->button6->TabIndex = 4;
+			this->button6->Text = L"6";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button7
 			// 
@@ -146,66 +182,6 @@ namespace modulocalculator {
 			this->button8->UseVisualStyleBackColor = true;
 			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
-			// button4
-			// 
-			this->button4->Location = System::Drawing::Point(5, 230);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(50, 50);
-			this->button4->TabIndex = 3;
-			this->button4->Text = L"4";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			// 
-			// button6
-			// 
-			this->button6->Location = System::Drawing::Point(117, 230);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(50, 50);
-			this->button6->TabIndex = 4;
-			this->button6->Text = L"6";
-			this->button6->UseVisualStyleBackColor = true;
-			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			// 
-			// button5
-			// 
-			this->button5->Location = System::Drawing::Point(61, 230);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(50, 50);
-			this->button5->TabIndex = 5;
-			this->button5->Text = L"5";
-			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(61, 286);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(50, 50);
-			this->button2->TabIndex = 6;
-			this->button2->Text = L"2";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			// 
-			// buttonTimes
-			// 
-			this->buttonTimes->Location = System::Drawing::Point(173, 174);
-			this->buttonTimes->Name = L"buttonTimes";
-			this->buttonTimes->Size = System::Drawing::Size(50, 50);
-			this->buttonTimes->TabIndex = 7;
-			this->buttonTimes->Text = L"*";
-			this->buttonTimes->UseVisualStyleBackColor = true;
-			// 
-			// button0
-			// 
-			this->button0->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-			this->button0->Location = System::Drawing::Point(61, 342);
-			this->button0->Name = L"button0";
-			this->button0->Size = System::Drawing::Size(50, 50);
-			this->button0->TabIndex = 8;
-			this->button0->Text = L"0";
-			this->button0->UseVisualStyleBackColor = true;
-			this->button0->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			// 
 			// button9
 			// 
 			this->button9->Location = System::Drawing::Point(118, 174);
@@ -216,25 +192,6 @@ namespace modulocalculator {
 			this->button9->UseVisualStyleBackColor = true;
 			this->button9->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
-			// buttonDivided
-			// 
-			this->buttonDivided->Location = System::Drawing::Point(173, 118);
-			this->buttonDivided->Name = L"buttonDivided";
-			this->buttonDivided->Size = System::Drawing::Size(50, 50);
-			this->buttonDivided->TabIndex = 10;
-			this->buttonDivided->Text = L"/";
-			this->buttonDivided->UseVisualStyleBackColor = true;
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(118, 286);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(50, 50);
-			this->button3->TabIndex = 11;
-			this->button3->Text = L"3";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			// 
 			// buttonPlus
 			// 
 			this->buttonPlus->Location = System::Drawing::Point(173, 230);
@@ -244,15 +201,32 @@ namespace modulocalculator {
 			this->buttonPlus->Text = L"+";
 			this->buttonPlus->UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// buttonMinus
 			// 
-			this->button1->Location = System::Drawing::Point(5, 286);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(50, 50);
-			this->button1->TabIndex = 13;
-			this->button1->Text = L"1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->buttonMinus->Location = System::Drawing::Point(174, 286);
+			this->buttonMinus->Name = L"buttonMinus";
+			this->buttonMinus->Size = System::Drawing::Size(50, 50);
+			this->buttonMinus->TabIndex = 0;
+			this->buttonMinus->Text = L"-";
+			this->buttonMinus->UseVisualStyleBackColor = true;
+			// 
+			// buttonTimes
+			// 
+			this->buttonTimes->Location = System::Drawing::Point(173, 174);
+			this->buttonTimes->Name = L"buttonTimes";
+			this->buttonTimes->Size = System::Drawing::Size(50, 50);
+			this->buttonTimes->TabIndex = 7;
+			this->buttonTimes->Text = L"*";
+			this->buttonTimes->UseVisualStyleBackColor = true;
+			// 
+			// buttonDivided
+			// 
+			this->buttonDivided->Location = System::Drawing::Point(173, 118);
+			this->buttonDivided->Name = L"buttonDivided";
+			this->buttonDivided->Size = System::Drawing::Size(50, 50);
+			this->buttonDivided->TabIndex = 10;
+			this->buttonDivided->Text = L"/";
+			this->buttonDivided->UseVisualStyleBackColor = true;
 			// 
 			// buttonEquals
 			// 
@@ -263,6 +237,27 @@ namespace modulocalculator {
 			this->buttonEquals->Text = L"=";
 			this->buttonEquals->UseVisualStyleBackColor = true;
 			// 
+			// zInput
+			// 
+			this->zInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
+			this->zInput->Location = System::Drawing::Point(40, 23);
+			this->zInput->MaximumSize = System::Drawing::Size(50, 30);
+			this->zInput->MinimumSize = System::Drawing::Size(28, 30);
+			this->zInput->Name = L"zInput";
+			this->zInput->ScrollBars = System::Windows::Forms::ScrollBars::Both;
+			this->zInput->Size = System::Drawing::Size(41, 26);
+			this->zInput->TabIndex = 16;
+			this->zInput->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
+			// 
+			// eqInput
+			// 
+			this->eqInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
+			this->eqInput->Location = System::Drawing::Point(5, 118);
+			this->eqInput->Name = L"eqInput";
+			this->eqInput->ReadOnly = true;
+			this->eqInput->Size = System::Drawing::Size(162, 50);
+			this->eqInput->TabIndex = 17;
+			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
@@ -272,27 +267,6 @@ namespace modulocalculator {
 			this->label1->Size = System::Drawing::Size(39, 39);
 			this->label1->TabIndex = 15;
 			this->label1->Text = L"Z";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-			this->textBox1->Location = System::Drawing::Point(40, 23);
-			this->textBox1->MaximumSize = System::Drawing::Size(50, 30);
-			this->textBox1->MinimumSize = System::Drawing::Size(28, 30);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->ScrollBars = System::Windows::Forms::ScrollBars::Both;
-			this->textBox1->Size = System::Drawing::Size(41, 26);
-			this->textBox1->TabIndex = 16;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
-			// 
-			// textBox2
-			// 
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
-			this->textBox2->Location = System::Drawing::Point(5, 118);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->ReadOnly = true;
-			this->textBox2->Size = System::Drawing::Size(162, 50);
-			this->textBox2->TabIndex = 17;
 			// 
 			// label2
 			// 
@@ -310,25 +284,25 @@ namespace modulocalculator {
 			this->AutoSize = true;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->ClientSize = System::Drawing::Size(234, 395);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->buttonEquals);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->buttonPlus);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->buttonDivided);
-			this->Controls->Add(this->button9);
 			this->Controls->Add(this->button0);
-			this->Controls->Add(this->buttonTimes);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button6);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button8);
 			this->Controls->Add(this->button7);
+			this->Controls->Add(this->button8);
+			this->Controls->Add(this->button9);
+			this->Controls->Add(this->buttonPlus);
 			this->Controls->Add(this->buttonMinus);
+			this->Controls->Add(this->buttonTimes);
+			this->Controls->Add(this->buttonDivided);
+			this->Controls->Add(this->buttonEquals);
+			this->Controls->Add(this->eqInput);
+			this->Controls->Add(this->zInput);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->label2);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MyForm";
 			this->Text = L"Modulo calculator";
@@ -340,7 +314,6 @@ namespace modulocalculator {
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	
 
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
