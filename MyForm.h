@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 namespace modulocalculator {
 
@@ -9,12 +10,17 @@ namespace modulocalculator {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+
 	/// <summary>
 	/// Podsumowanie informacji o MyForm
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
+		int num1;
+		int num2;
+		String^ action;
+		bool to_clear = false;
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -51,6 +57,7 @@ namespace modulocalculator {
 		System::Windows::Forms::Button^ buttonTimes;
 		System::Windows::Forms::Button^ buttonDivided;
 		System::Windows::Forms::Button^ buttonEquals;
+		System::Windows::Forms::Button^ buttonC;
 
 		System::Windows::Forms::TextBox^ zInput;
 		System::Windows::Forms::TextBox^ eqInput;
@@ -85,6 +92,7 @@ namespace modulocalculator {
 			this->buttonTimes = (gcnew System::Windows::Forms::Button());
 			this->buttonDivided = (gcnew System::Windows::Forms::Button());
 			this->buttonEquals = (gcnew System::Windows::Forms::Button());
+			this->buttonC = (gcnew System::Windows::Forms::Button());
 			this->zInput = (gcnew System::Windows::Forms::TextBox());
 			this->eqInput = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -200,6 +208,7 @@ namespace modulocalculator {
 			this->buttonPlus->TabIndex = 12;
 			this->buttonPlus->Text = L"+";
 			this->buttonPlus->UseVisualStyleBackColor = true;
+			this->buttonPlus->Click += gcnew System::EventHandler(this, &MyForm::buttonAction_Click);
 			// 
 			// buttonMinus
 			// 
@@ -209,6 +218,7 @@ namespace modulocalculator {
 			this->buttonMinus->TabIndex = 0;
 			this->buttonMinus->Text = L"-";
 			this->buttonMinus->UseVisualStyleBackColor = true;
+			this->buttonMinus->Click += gcnew System::EventHandler(this, &MyForm::buttonAction_Click);
 			// 
 			// buttonTimes
 			// 
@@ -218,6 +228,7 @@ namespace modulocalculator {
 			this->buttonTimes->TabIndex = 7;
 			this->buttonTimes->Text = L"*";
 			this->buttonTimes->UseVisualStyleBackColor = true;
+			this->buttonTimes->Click += gcnew System::EventHandler(this, &MyForm::buttonAction_Click);
 			// 
 			// buttonDivided
 			// 
@@ -227,15 +238,27 @@ namespace modulocalculator {
 			this->buttonDivided->TabIndex = 10;
 			this->buttonDivided->Text = L"/";
 			this->buttonDivided->UseVisualStyleBackColor = true;
+			this->buttonDivided->Click += gcnew System::EventHandler(this, &MyForm::buttonAction_Click);
 			// 
 			// buttonEquals
 			// 
-			this->buttonEquals->Location = System::Drawing::Point(118, 342);
+			this->buttonEquals->Location = System::Drawing::Point(119, 342);
 			this->buttonEquals->Name = L"buttonEquals";
 			this->buttonEquals->Size = System::Drawing::Size(105, 50);
 			this->buttonEquals->TabIndex = 14;
 			this->buttonEquals->Text = L"=";
 			this->buttonEquals->UseVisualStyleBackColor = true;
+			this->buttonEquals->Click += gcnew System::EventHandler(this, &MyForm::buttonEquals_Click);
+			// 
+			// buttonC
+			// 
+			this->buttonC->Location = System::Drawing::Point(5, 342);
+			this->buttonC->Name = L"buttonC";
+			this->buttonC->Size = System::Drawing::Size(50, 50);
+			this->buttonC->TabIndex = 19;
+			this->buttonC->Text = L"C";
+			this->buttonC->UseVisualStyleBackColor = true;
+			this->buttonC->Click += gcnew System::EventHandler(this, &MyForm::buttonC_Click);
 			// 
 			// zInput
 			// 
@@ -247,16 +270,19 @@ namespace modulocalculator {
 			this->zInput->ScrollBars = System::Windows::Forms::ScrollBars::Both;
 			this->zInput->Size = System::Drawing::Size(41, 26);
 			this->zInput->TabIndex = 16;
+			this->zInput->Text = L"100";
 			this->zInput->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// eqInput
 			// 
 			this->eqInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
 			this->eqInput->Location = System::Drawing::Point(5, 118);
+			this->eqInput->MaxLength = 12;
 			this->eqInput->Name = L"eqInput";
-			this->eqInput->ReadOnly = true;
 			this->eqInput->Size = System::Drawing::Size(162, 50);
 			this->eqInput->TabIndex = 17;
+			this->eqInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
+			this->eqInput->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::eqInput_KeyPress);
 			// 
 			// label1
 			// 
@@ -271,11 +297,10 @@ namespace modulocalculator {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(2, 89);
+			this->label2->Location = System::Drawing::Point(2, 90);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(35, 13);
+			this->label2->Size = System::Drawing::Size(0, 13);
 			this->label2->TabIndex = 18;
-			this->label2->Text = L"label2";
 			// 
 			// MyForm
 			// 
@@ -284,6 +309,7 @@ namespace modulocalculator {
 			this->AutoSize = true;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->ClientSize = System::Drawing::Size(234, 395);
+			this->Controls->Add(this->buttonC);
 			this->Controls->Add(this->button0);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->button2);
@@ -312,16 +338,62 @@ namespace modulocalculator {
 
 		}
 #pragma endregion
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
+private:
+		System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		}
 
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		}
+
+		//Making it so I dont have to write like 10 almost same methods. Im making one handler to 10 buttons 0-9
+		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+			//casting sender to button so i can access its values easily
+			System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
+			if (to_clear)
+			{
+				eqInput->Clear();
+				to_clear = false;
+			}
+			eqInput->Text += button->Text;
+
+		};
+		System::Void buttonAction_Click(System::Object^ sender, System::EventArgs^ e) {
+			//casting sender to button so i can access its values easily
+			System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
+			action = Convert::ToString(button->Text); // 'action' is +, -, * or /
+			label2->Text = eqInput->Text;
+			label2->Text += action;
+			num1 = Convert::ToInt32(eqInput->Text);
+			to_clear = true;
+			
+		}
+		//Clicking "=" results in stashing number from eqInput to num 2 and
+		//perform an equation with num1 specified by char 'action'
+		System::Void buttonEquals_Click(System::Object^ sender, System::EventArgs^ e) {
+			num2 = Convert::ToInt32(eqInput->Text);
+			int result=0;
+			if (action == "+") result = num1 + num2;
+			else if (action == "-") result = num1 - num2;
+			else if (action == "*") result = num1 * num2;
+			else if (action == "/") result = num1 / num2;
+			String^ result_string = Convert::ToString(result);
+			eqInput->Text = result_string;
+		}
+		System::Void buttonC_Click(System::Object^ sender, System::EventArgs^ e) {
+			eqInput->Clear();
+			label2->Text = "";
+			num1 = 0;
+			num2 = 0;
+		}
+		
+private: System::Void eqInput_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 }
-
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	//Making it so I dont have to write like 10 almost same methods. Im making one handler to 10 buttons 0-9
-	System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
-	button->Text = "siema";
-};
+private: System::Void eqInput_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	if (e->KeyChar == 's')
+		
+	{
+		e->Handled = true;
+	}
+}
 };
 }
