@@ -361,6 +361,7 @@ private:
 			//casting sender to button so i can access its values easily
 			System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
 			action = Convert::ToString(button->Text); // 'action' is +, -, * or /
+			
 			label2->Text = eqInput->Text;
 			label2->Text += action;
 			num1 = Convert::ToInt32(eqInput->Text);
@@ -368,17 +369,22 @@ private:
 			
 		}
 		//Clicking "=" results in stashing number from eqInput to num 2 and
-		//perform an equation with num1 specified by char 'action'
+		//perform an equation with num1 specified by string 'action' (+,-,/ or *)
 		System::Void buttonEquals_Click(System::Object^ sender, System::EventArgs^ e) {
 			num2 = Convert::ToInt32(eqInput->Text);
 			int result=0;
+
 			if (action == "+") result = num1 + num2;
 			else if (action == "-") result = num1 - num2;
 			else if (action == "*") result = num1 * num2;
 			else if (action == "/") result = num1 / num2;
+
 			String^ result_string = Convert::ToString(result);
 			eqInput->Text = result_string;
+			label2->Text = "";
+			to_clear = true;
 		}
+
 		System::Void buttonC_Click(System::Object^ sender, System::EventArgs^ e) {
 			eqInput->Clear();
 			label2->Text = "";
@@ -390,7 +396,6 @@ private: System::Void eqInput_KeyDown(System::Object^ sender, System::Windows::F
 }
 private: System::Void eqInput_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
 	if (e->KeyChar == 's')
-		
 	{
 		e->Handled = true;
 	}
