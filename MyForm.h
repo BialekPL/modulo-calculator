@@ -20,6 +20,8 @@ namespace modulocalculator {
 		int num1;
 		int num2;
 		String^ action;
+
+	public:
 		bool to_clear = false;
 		MyForm(void)
 		{
@@ -271,13 +273,12 @@ namespace modulocalculator {
 			this->zInput->Size = System::Drawing::Size(41, 26);
 			this->zInput->TabIndex = 16;
 			this->zInput->Text = L"100";
-			this->zInput->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// eqInput
 			// 
 			this->eqInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
 			this->eqInput->Location = System::Drawing::Point(5, 118);
-			this->eqInput->MaxLength = 12;
+			this->eqInput->MaxLength = 6;
 			this->eqInput->Name = L"eqInput";
 			this->eqInput->Size = System::Drawing::Size(162, 50);
 			this->eqInput->TabIndex = 17;
@@ -331,7 +332,7 @@ namespace modulocalculator {
 			this->Controls->Add(this->label2);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MyForm";
-			this->Text = L"Modulo calculator";
+			this->Text = L"Modulo";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -342,8 +343,7 @@ private:
 		System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		}
 
-		System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		}
+		
 
 		//Making it so I dont have to write like 10 almost same methods. Im making one handler to 10 buttons 0-9
 		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -352,37 +352,50 @@ private:
 			if (to_clear)
 			{
 				eqInput->Clear();
+				label2->Text += button->Text;
 				to_clear = false;
 			}
 			eqInput->Text += button->Text;
 
 		};
+		int resolve(int num1, int num2, String^ action)
+		{
+			if (action == "+") return num1 + num2;
+			else if (action == "-") return num1 - num2;
+			else if (action == "*") return num1 * num2;
+			else if (action == "/") return num1 / num2;
+		}
 		System::Void buttonAction_Click(System::Object^ sender, System::EventArgs^ e) {
 			//casting sender to button so i can access its values easily
 			System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
-			action = Convert::ToString(button->Text); // 'action' is +, -, * or /
-			
-			label2->Text = eqInput->Text;
-			label2->Text += action;
-			num1 = Convert::ToInt32(eqInput->Text);
-			to_clear = true;
-			
+			if (label2->Text != "")
+			{
+				num2 = Convert::ToInt32(eqInput->Text);
+				int result = resolve(num1, num2, action);
+				action = Convert::ToString(button->Text);
+				String^ result_string = Convert::ToString(result);
+				eqInput->Text = result_string;
+				label2->Text = result_string + action;
+				to_clear = true;
+				num1 = result;
+			}
+			else {
+				action = Convert::ToString(button->Text); // 'action' is +, -, * or /
+				num1 = Convert::ToInt32(eqInput->Text);
+				label2->Text = eqInput->Text;
+				label2->Text += action;
+				to_clear = true;
+			}
 		}
 		//Clicking "=" results in stashing number from eqInput to num 2 and
 		//perform an equation with num1 specified by string 'action' (+,-,/ or *)
 		System::Void buttonEquals_Click(System::Object^ sender, System::EventArgs^ e) {
 			num2 = Convert::ToInt32(eqInput->Text);
-			int result=0;
-
-			if (action == "+") result = num1 + num2;
-			else if (action == "-") result = num1 - num2;
-			else if (action == "*") result = num1 * num2;
-			else if (action == "/") result = num1 / num2;
-
+			int result = resolve(num1, num2, action);
 			String^ result_string = Convert::ToString(result);
 			eqInput->Text = result_string;
 			label2->Text = "";
-			to_clear = true;
+			//to_clear = true;
 		}
 
 		System::Void buttonC_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -390,15 +403,15 @@ private:
 			label2->Text = "";
 			num1 = 0;
 			num2 = 0;
+			to_clear = false;
 		}
-		
-private: System::Void eqInput_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-}
-private: System::Void eqInput_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-	if (e->KeyChar == 's')
-	{
-		e->Handled = true;
-	}
-}
+
+		System::Void eqInput_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+			if (e->KeyChar < 48 || e->KeyChar > 57)
+			{
+				e->Handled = true;
+			}
+		}
+		};
 };
-}
+
