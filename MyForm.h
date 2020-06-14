@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 
 namespace modulocalculator {
@@ -12,29 +12,22 @@ namespace modulocalculator {
 
 
 	/// <summary>
-	/// Podsumowanie informacji o MyForm
+	/// This is modulo-calculator. It performs algebric operations in given modulo set.
+	/// Modulo set is specified in zInput textbox, which is in top left corner.
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		int num1;
-		int num2;
-		String^ action;
-
-	public:
+		long long int num1 = 0;
+		long long int num2 = 0;
+		String^ action = "none";
 		bool to_clear = false;
+		bool equals_just_pressed = true;
+
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: W tym miejscu dodaj kod konstruktora
-			//
 		}
-
-	protected:
-		/// <summary>
-		/// Wyczyœæ wszystkie u¿ywane zasoby.
-		/// </summary>
 		~MyForm()
 		{
 			if (components)
@@ -69,12 +62,12 @@ namespace modulocalculator {
 		/// <summary>
 		/// Wymagana zmienna projektanta.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Metoda wymagana do obs³ugi projektanta — nie nale¿y modyfikowaæ
-		/// jej zawartoœci w edytorze kodu.
+		/// Metoda wymagana do obsÂ³ugi projektanta â€” nie naleÂ¿y modyfikowaÃ¦
+		/// jej zawartoÅ“ci w edytorze kodu.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -217,7 +210,7 @@ namespace modulocalculator {
 			this->buttonMinus->Location = System::Drawing::Point(174, 286);
 			this->buttonMinus->Name = L"buttonMinus";
 			this->buttonMinus->Size = System::Drawing::Size(50, 50);
-			this->buttonMinus->TabIndex = 0;
+			this->buttonMinus->TabIndex = 17;
 			this->buttonMinus->Text = L"-";
 			this->buttonMinus->UseVisualStyleBackColor = true;
 			this->buttonMinus->Click += gcnew System::EventHandler(this, &MyForm::buttonAction_Click);
@@ -266,22 +259,25 @@ namespace modulocalculator {
 			// 
 			this->zInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->zInput->Location = System::Drawing::Point(40, 23);
-			this->zInput->MaximumSize = System::Drawing::Size(50, 30);
-			this->zInput->MinimumSize = System::Drawing::Size(28, 30);
+			this->zInput->MaximumSize = System::Drawing::Size(60, 30);
+			this->zInput->MaxLength = 9;
+			this->zInput->MinimumSize = System::Drawing::Size(60, 30);
 			this->zInput->Name = L"zInput";
 			this->zInput->ScrollBars = System::Windows::Forms::ScrollBars::Both;
-			this->zInput->Size = System::Drawing::Size(41, 26);
+			this->zInput->Size = System::Drawing::Size(60, 26);
 			this->zInput->TabIndex = 16;
-			this->zInput->Text = L"100";
+			this->zInput->Text = L"10";
+			this->zInput->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::zInput_KeyPress);
 			// 
 			// eqInput
 			// 
 			this->eqInput->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 28));
 			this->eqInput->Location = System::Drawing::Point(5, 118);
-			this->eqInput->MaxLength = 6;
+			this->eqInput->MaxLength = 9;
 			this->eqInput->Name = L"eqInput";
+			this->eqInput->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->eqInput->Size = System::Drawing::Size(162, 50);
-			this->eqInput->TabIndex = 17;
+			this->eqInput->TabIndex = 0;
 			this->eqInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
 			this->eqInput->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &MyForm::eqInput_KeyPress);
 			// 
@@ -305,6 +301,7 @@ namespace modulocalculator {
 			// 
 			// MyForm
 			// 
+			this->AcceptButton = this->buttonEquals;
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
@@ -331,6 +328,7 @@ namespace modulocalculator {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->label2);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"MyForm";
 			this->Text = L"Modulo";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -339,63 +337,126 @@ namespace modulocalculator {
 
 		}
 #pragma endregion
-private:
+	private:
 		System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		}
 
-		
+		System::Void clear()
+		{
+			eqInput->Clear();
+			to_clear = false;
+			equals_just_pressed = true;
+		}
 
-		//Making it so I dont have to write like 10 almost same methods. Im making one handler to 10 buttons 0-9
+		int resolve(long int num1, long int num2, String^ action)
+		{
+			int modulo = Convert::ToInt32(zInput->Text);
+			//im dividing two ints, this means that if i will get some non integer value
+			//it will be rounded down to nearest integer.
+			if (action == "/")
+			{
+				return (num1 / num2) % modulo;
+			}
+			else if (action == "-") {
+				//with substraction i make it so the result is always positive value (preference)
+				return (((num1 - num2) % modulo) + modulo) % modulo;
+			}
+			else{
+				// using some algebric theorems here to avoid overflow (even though user theoretically cannot input 
+				//such big values to cause overflow of long long ints, i still thought its good to implement this)
+				//basically (a*b)%n = (a%n * b%n)%n
+				//similarly with addition
+				num1 %= modulo;
+				num2 %= modulo;
+				if (action == "+") return (num1 + num2) % modulo;
+				if (action == "*") return (num1 * num2) % modulo;
+				//if user somehow put some not handled 'action' return negative 1
+				return -1;
+			}
+		}
+		//Making one handler to 10 buttons 0-9
 		System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 			//casting sender to button so i can access its values easily
 			System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
-			if (to_clear)
+			if (to_clear) clear();
+			if(eqInput->TextLength < eqInput->MaxLength)
 			{
-				eqInput->Clear();
-				label2->Text += button->Text;
-				to_clear = false;
+				eqInput->Text += button->Text;
+				equals_just_pressed = false;
 			}
-			eqInput->Text += button->Text;
+			// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
+			eqInput->Select(0, 0);
 
 		};
-		int resolve(int num1, int num2, String^ action)
-		{
-			if (action == "+") return num1 + num2;
-			else if (action == "-") return num1 - num2;
-			else if (action == "*") return num1 * num2;
-			else if (action == "/") return num1 / num2;
-		}
+
 		System::Void buttonAction_Click(System::Object^ sender, System::EventArgs^ e) {
 			//casting sender to button so i can access its values easily
 			System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
-			if (label2->Text != "")
+			try {
+				if (to_clear) clear();
+				if (label2->Text != "")
+				{
+					num2 = Convert::ToInt32(eqInput->Text);
+					int result = resolve(num1, num2, action);
+					action = Convert::ToString(button->Text);
+					String^ result_string = Convert::ToString(result);
+					eqInput->Text = result_string;
+					label2->Text = result_string + action;
+					to_clear = true;
+					num1 = result;
+				}
+				else {
+
+					action = Convert::ToString(button->Text); // 'action' is +, -, * or /
+					num1 = Convert::ToInt32(eqInput->Text);
+					label2->Text = eqInput->Text;
+					label2->Text += action;
+					to_clear = true;
+				}		
+			}
+			catch (const FormatException^ e)
 			{
-				num2 = Convert::ToInt32(eqInput->Text);
-				int result = resolve(num1, num2, action);
-				action = Convert::ToString(button->Text);
-				String^ result_string = Convert::ToString(result);
-				eqInput->Text = result_string;
-				label2->Text = result_string + action;
-				to_clear = true;
-				num1 = result;
+				//thrown when user somehow entered some illegal characters into eqInput
+				buttonC->PerformClick();
 			}
-			else {
-				action = Convert::ToString(button->Text); // 'action' is +, -, * or /
-				num1 = Convert::ToInt32(eqInput->Text);
-				label2->Text = eqInput->Text;
-				label2->Text += action;
+			catch (const DivideByZeroException^ zeroerr)
+			{
+				eqInput->Text = "Divide/0 !";
 				to_clear = true;
 			}
-		}
+			finally
+			{
+				// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
+				eqInput->Select(0, 0);
+			}
+		};
+		
 		//Clicking "=" results in stashing number from eqInput to num 2 and
 		//perform an equation with num1 specified by string 'action' (+,-,/ or *)
 		System::Void buttonEquals_Click(System::Object^ sender, System::EventArgs^ e) {
-			num2 = Convert::ToInt32(eqInput->Text);
-			int result = resolve(num1, num2, action);
-			String^ result_string = Convert::ToString(result);
-			eqInput->Text = result_string;
-			label2->Text = "";
-			//to_clear = true;
+			
+			if ((action != "none" && equals_just_pressed == false))
+			{
+				try {
+					equals_just_pressed = true;
+					num2 = Convert::ToInt32(eqInput->Text);
+					int result = resolve(num1, num2, action);
+					String^ result_string = Convert::ToString(result);
+					eqInput->Text = result_string;
+					action = "none";
+					label2->Text = "";
+					to_clear = true;
+					// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
+					eqInput->Select(0, 0);
+				}
+				catch (const DivideByZeroException^ zeroerr)
+				{
+					eqInput->Text = "Divide/0 !";
+					to_clear = true;
+				}
+				catch(...){ }
+			}
+			
 		}
 
 		System::Void buttonC_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -404,14 +465,65 @@ private:
 			num1 = 0;
 			num2 = 0;
 			to_clear = false;
+			equals_just_pressed = false;
+			eqInput->Select(0,0);
 		}
 
 		System::Void eqInput_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-			if (e->KeyChar < 48 || e->KeyChar > 57)
+			char k = e->KeyChar;
+			//allow backspace
+			if (k == 8)
+			{
+				e->Handled = false;
+			}
+			//pressing Enter invokes buttonEquals click
+			else if (k == 13) buttonEquals->PerformClick();
+			//run action buttons from keyboard
+			else if (k == '+' || k == '-' || k == '*' || k == '/' || k == '=')
+			{
+				switch (k)
+				{
+				case '+':
+					buttonPlus->PerformClick();
+					break;
+				case '-':
+					buttonMinus->PerformClick();
+					break;
+				case '*':
+					buttonTimes->PerformClick();
+					break;
+				case '/':
+					buttonDivided->PerformClick();
+					break;
+				case '=':
+					buttonEquals->PerformClick();
+					break;
+				}
+				e->Handled = true;
+			}
+			//dont allow any characters expect for numbers (48 is '0' and 57 is '9' in ASCII)
+			else if (k < 48 || k > 57)
+			{
+				e->Handled = true;
+			}
+			else
+			{
+				if (to_clear) clear();
+			}
+				if (k!='=')equals_just_pressed = false;
+
+		};
+		
+		System::Void zInput_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+			char c = e->KeyChar;
+			if (c == 8)
+			{
+				e->Handled = false;
+			}
+			else if (c < 48 || c > 57)
 			{
 				e->Handled = true;
 			}
 		}
-		};
 };
-
+};
