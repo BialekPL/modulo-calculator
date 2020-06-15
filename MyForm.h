@@ -107,6 +107,8 @@ namespace modulocalculator {
 			// 
 			// button1
 			// 
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button1->Location = System::Drawing::Point(5, 286);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(50, 50);
@@ -117,6 +119,8 @@ namespace modulocalculator {
 			// 
 			// button2
 			// 
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button2->Location = System::Drawing::Point(61, 286);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(50, 50);
@@ -127,6 +131,8 @@ namespace modulocalculator {
 			// 
 			// button3
 			// 
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button3->Location = System::Drawing::Point(118, 286);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(50, 50);
@@ -137,6 +143,8 @@ namespace modulocalculator {
 			// 
 			// button4
 			// 
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button4->Location = System::Drawing::Point(5, 230);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(50, 50);
@@ -147,6 +155,8 @@ namespace modulocalculator {
 			// 
 			// button5
 			// 
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button5->Location = System::Drawing::Point(61, 230);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(50, 50);
@@ -157,6 +167,8 @@ namespace modulocalculator {
 			// 
 			// button6
 			// 
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button6->Location = System::Drawing::Point(117, 230);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(50, 50);
@@ -167,6 +179,8 @@ namespace modulocalculator {
 			// 
 			// button7
 			// 
+			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button7->Location = System::Drawing::Point(5, 174);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(50, 50);
@@ -177,6 +191,8 @@ namespace modulocalculator {
 			// 
 			// button8
 			// 
+			this->button8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button8->Location = System::Drawing::Point(61, 174);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(50, 50);
@@ -187,6 +203,8 @@ namespace modulocalculator {
 			// 
 			// button9
 			// 
+			this->button9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->button9->Location = System::Drawing::Point(118, 174);
 			this->button9->Name = L"button9";
 			this->button9->Size = System::Drawing::Size(50, 50);
@@ -197,6 +215,8 @@ namespace modulocalculator {
 			// 
 			// buttonPlus
 			// 
+			this->buttonPlus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->buttonPlus->Location = System::Drawing::Point(173, 230);
 			this->buttonPlus->Name = L"buttonPlus";
 			this->buttonPlus->Size = System::Drawing::Size(50, 50);
@@ -207,6 +227,8 @@ namespace modulocalculator {
 			// 
 			// buttonMinus
 			// 
+			this->buttonMinus->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->buttonMinus->Location = System::Drawing::Point(174, 286);
 			this->buttonMinus->Name = L"buttonMinus";
 			this->buttonMinus->Size = System::Drawing::Size(50, 50);
@@ -217,6 +239,8 @@ namespace modulocalculator {
 			// 
 			// buttonTimes
 			// 
+			this->buttonTimes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->buttonTimes->Location = System::Drawing::Point(173, 174);
 			this->buttonTimes->Name = L"buttonTimes";
 			this->buttonTimes->Size = System::Drawing::Size(50, 50);
@@ -227,6 +251,8 @@ namespace modulocalculator {
 			// 
 			// buttonDivided
 			// 
+			this->buttonDivided->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->buttonDivided->Location = System::Drawing::Point(173, 118);
 			this->buttonDivided->Name = L"buttonDivided";
 			this->buttonDivided->Size = System::Drawing::Size(50, 50);
@@ -237,6 +263,8 @@ namespace modulocalculator {
 			// 
 			// buttonEquals
 			// 
+			this->buttonEquals->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->buttonEquals->Location = System::Drawing::Point(119, 342);
 			this->buttonEquals->Name = L"buttonEquals";
 			this->buttonEquals->Size = System::Drawing::Size(105, 50);
@@ -247,6 +275,8 @@ namespace modulocalculator {
 			// 
 			// buttonC
 			// 
+			this->buttonC->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
 			this->buttonC->Location = System::Drawing::Point(5, 342);
 			this->buttonC->Name = L"buttonC";
 			this->buttonC->Size = System::Drawing::Size(50, 50);
@@ -385,6 +415,7 @@ namespace modulocalculator {
 				equals_just_pressed = false;
 			}
 			// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
+			eqInput->Select();
 			eqInput->Select(0, 0);
 
 		};
@@ -394,8 +425,15 @@ namespace modulocalculator {
 			System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^) sender;
 			try {
 				if (to_clear) clear();
-				if (label2->Text != "")
+				if (label2->Text == "")
 				{
+					action = Convert::ToString(button->Text); // 'action' is +, -, * or /
+					num1 = Convert::ToInt32(eqInput->Text);
+					label2->Text = eqInput->Text;
+					label2->Text += action;
+					to_clear = true;
+				}
+				else {
 					num2 = Convert::ToInt32(eqInput->Text);
 					int result = resolve(num1, num2, action);
 					action = Convert::ToString(button->Text);
@@ -404,14 +442,6 @@ namespace modulocalculator {
 					label2->Text = result_string + action;
 					to_clear = true;
 					num1 = result;
-				}
-				else {
-
-					action = Convert::ToString(button->Text); // 'action' is +, -, * or /
-					num1 = Convert::ToInt32(eqInput->Text);
-					label2->Text = eqInput->Text;
-					label2->Text += action;
-					to_clear = true;
 				}		
 			}
 			catch (const FormatException^ e)
@@ -427,6 +457,7 @@ namespace modulocalculator {
 			finally
 			{
 				// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
+				eqInput->Select();
 				eqInput->Select(0, 0);
 			}
 		};
@@ -447,12 +478,19 @@ namespace modulocalculator {
 					label2->Text = "";
 					to_clear = true;
 					// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
-					eqInput->Select(0, 0);
+					eqInput->Select();
+					eqInput->Select(0,0);
+
 				}
 				catch (const DivideByZeroException^ zeroerr)
 				{
 					eqInput->Text = "Divide/0 !";
 					to_clear = true;
+				}
+				catch (const FormatException^ e)
+				{
+					//thrown when user somehow entered some illegal characters into eqInput
+					buttonC->PerformClick();
 				}
 				catch(...){ }
 			}
