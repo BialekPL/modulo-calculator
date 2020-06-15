@@ -502,6 +502,7 @@ namespace modulocalculator {
 			num2 = 0;
 			to_clear = false;
 			equals_just_pressed = false;
+			eqInput->Select();
 			eqInput->Select(0,0);
 		}
 
