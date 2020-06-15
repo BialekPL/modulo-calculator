@@ -10,7 +10,6 @@ namespace modulocalculator {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-
 	/// <summary>
 	/// This is modulo-calculator. It performs algebric operations in given modulo set.
 	/// Modulo set is specified in zInput textbox, which is in top left corner.
@@ -417,7 +416,6 @@ namespace modulocalculator {
 			// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
 			eqInput->Select();
 			eqInput->Select(0, 0);
-
 		};
 
 		System::Void buttonAction_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -454,6 +452,7 @@ namespace modulocalculator {
 				eqInput->Text = "Divide/0 !";
 				to_clear = true;
 			}
+			catch (...) {}
 			finally
 			{
 				// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
@@ -480,7 +479,6 @@ namespace modulocalculator {
 					// now selecting eqInput so user can use numpad without reaching for mouse and clicking the textbox
 					eqInput->Select();
 					eqInput->Select(0,0);
-
 				}
 				catch (const DivideByZeroException^ zeroerr)
 				{
@@ -549,7 +547,6 @@ namespace modulocalculator {
 				if (to_clear) clear();
 			}
 				if (k!='=')equals_just_pressed = false;
-
 		};
 		
 		System::Void zInput_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
